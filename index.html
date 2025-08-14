@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crest.pet - AI-Assisted Pet Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom class to hide elements */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased relative">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer">
+                <!-- Bone Icon SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><path d="M17 12c.28-.28.56-.56.85-.85a4.24 4.24 0 0 0 0-6 4.24 4.24 0 0 0-6 0c-.28.28-.56.56-.85.85A4.24 4.24 0 0 0 5.15 11c.28-.28.56-.56.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c.28-.28.56-.56.85-.85A4.24 4.24 0 0 0 17 6.15c-.28.28-.56.56-.85.85a4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 0-6 0 4.24 4.24 0 0 0 0 6c.28.28.56.56.85.85A4.24 4.24 0 0 0 11 18.85c.28.28.56.56.85.85a4.24 4.24 0 0 1 0 6 4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 1 5.15 13c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c.28-.28.56-.56.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 0-6c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 0 13 5.15c.28.28.56.56.85.85a4.24 4.24 0 0 1 6 0Z"/></svg>
+                <span class="text-2xl font-bold text-gray-900 tracking-tight">crest.pet</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">How it Works</a>
+                <a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">Pricing</a>
+                <a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">Vets</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="loginBtnHeader" class="hidden md:block text-purple-600 font-semibold hover:text-purple-700 transition-colors">Log In</button>
+                <button id="signUpBtnHeader" class="bg-purple-600 text-white font-semibold px-5 py-2.5 rounded-full hover:bg-purple-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    Try for Free
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-white pt-16 pb-24 text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+                    Vet care that doesn't bite
+                    <br />
+                    <span class="text-purple-600">your wallet.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+                    Get 24/7 AI-powered vet guidance, book appointments instantly, and save up to 80% with our dynamic pricing. No membership fees, ever.
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <button id="bookAppointmentBtnHero" class="bg-purple-600 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        Book an Appointment
+                    </button>
+                    <button id="chatBtnHero" class="bg-gray-200 text-gray-800 font-bold px-8 py-4 rounded-full text-lg hover:bg-gray-300 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center space-x-2">
+                        <!-- MessageSquare Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <span>Chat with AI Vet</span>
+                    </button>
+                </div>
+                <div class="mt-8 text-sm text-gray-500 flex items-center justify-center space-x-4">
+                    <span class="flex items-center">
+                        <!-- ShieldCheck Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-green-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                        HIPAA Compliant
+                    </span>
+                    <span>|</span>
+                    <span>Opt-in Free Trial</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other sections will go here -->
+        <!-- Features Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Pet care, simplified.</h2>
+                    <p class="text-lg text-gray-600 mt-2">Everything you need for a happy, healthy pet.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Feature Cards -->
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 text-center">
+                        <div class="inline-block bg-purple-100 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">24/7 AI Vet Assistant</h3>
+                        <p class="text-gray-600">Got a question at 3 AM? Our AI vet is always on call to provide guidance and peace of mind.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 text-center">
+                        <div class="inline-block bg-purple-100 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Instant Booking</h3>
+                        <p class="text-gray-600">Find and book appointments with top-rated local vets in seconds. No phone calls, no hassle.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-200/50 text-center">
+                        <div class="inline-block bg-purple-100 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Dynamic Pricing</h3>
+                        <p class="text-gray-600">Unlock savings up to 80% on routine care. We find you the best prices, automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Comparison Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">See your savings.</h2>
+                        <p class="text-lg text-gray-600 mt-4 mb-6">
+                            We believe in transparent pricing. See how much you can save on common procedures compared to traditional vets.
+                        </p>
+                        <button id="startSavingBtn" class="text-purple-600 font-bold flex items-center gap-2 group mx-auto md:mx-0">
+                            Start Saving Now 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                    <div class="md:w-1/2 w-full">
+                        <div class="bg-gray-50 p-8 rounded-2xl shadow-lg border">
+                            <h3 class="font-bold text-xl text-gray-900 mb-6">Wellness Exam Cost</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Traditional Vet</span>
+                                    <span class="text-gray-500 font-semibold line-through">$150</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 mr-2"><path d="M17 12c.28-.28.56-.56.85-.85a4.24 4.24 0 0 0 0-6 4.24 4.24 0 0 0-6 0c-.28.28-.56.56-.85.85A4.24 4.24 0 0 0 5.15 11c.28-.28.56-.56.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c.28-.28.56-.56.85-.85A4.24 4.24 0 0 0 17 6.15c-.28.28-.56.56-.85.85a4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 0-6 0 4.24 4.24 0 0 0 0 6c.28.28.56.56.85.85A4.24 4.24 0 0 0 11 18.85c.28.28.56.56.85.85a4.24 4.24 0 0 1 0 6 4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 1 5.15 13c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 0-6c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 0 13 5.15c.28.28.56.56.85.85a4.24 4.24 0 0 1 6 0Z"/></svg>
+                                        <span class="text-purple-600 font-bold">crest.pet Price</span>
+                                    </div>
+                                    <span class="text-purple-600 font-bold text-2xl">$45</span>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-gray-200 text-center">
+                                <p class="text-green-600 font-bold text-lg">You save 70%!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Happy pets, happy parents.</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonial Cards -->
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-200/50">
+                        <div class="flex mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <p class="text-gray-700 mb-4">"The AI chat saved me a midnight trip to the emergency vet. So grateful for this service!"</p>
+                        <div>
+                            <p class="font-bold text-gray-900">Jessica M.</p>
+                            <p class="text-sm text-gray-500">Owner of Luna the Golden Retriever</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-200/50">
+                        <div class="flex mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <p class="text-gray-700 mb-4">"Booking an appointment was easier than ordering pizza. And I saved $100 on vaccinations. 10/10."</p>
+                        <div>
+                            <p class="font-bold text-gray-900">David L.</p>
+                            <p class="text-sm text-gray-500">Owner of Whiskers the Cat</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-200/50">
+                        <div class="flex mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <p class="text-gray-700 mb-4">"Finally, a pet care service that gets it. Modern, affordable, and actually cares. The future is here."</p>
+                        <div>
+                            <p class="font-bold text-gray-900">Chloe T.</p>
+                            <p class="text-sm text-gray-500">Owner of Pip the Parrot</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><path d="M17 12c.28-.28.56-.56.85-.85a4.24 4.24 0 0 0 0-6 4.24 4.24 0 0 0-6 0c-.28.28-.56.56-.85.85A4.24 4.24 0 0 0 5.15 11c.28-.28.56-.56.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c.28-.28.56-.56.85-.85A4.24 4.24 0 0 0 17 6.15c-.28.28-.56.56-.85.85a4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 0-6 0 4.24 4.24 0 0 0 0 6c.28.28.56.56.85.85A4.24 4.24 0 0 0 11 18.85c.28.28.56.56.85.85a4.24 4.24 0 0 1 0 6 4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 1 5.15 13c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 0-6c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 0 13 5.15c.28.28.56.56.85.85a4.24 4.24 0 0 1 6 0Z"/></svg>
+                        <span class="text-xl font-bold text-gray-900">crest.pet</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Vet care, simplified.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">Careers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">For Vets</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">crest.vet</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">FAQ</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-purple-600">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2024 Crest Pet Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full max-w-md relative">
+            <button id="closeSignUpModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600 mx-auto mb-4"><path d="M17 12c.28-.28.56-.56.85-.85a4.24 4.24 0 0 0 0-6 4.24 4.24 0 0 0-6 0c-.28.28-.56.56-.85.85A4.24 4.24 0 0 0 5.15 11c.28-.28.56-.56.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c.28-.28.56-.56.85-.85A4.24 4.24 0 0 0 17 6.15c-.28.28-.56.56-.85.85a4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 0-6 0 4.24 4.24 0 0 0 0 6c.28.28.56.56.85.85A4.24 4.24 0 0 0 11 18.85c.28.28.56.56.85.85a4.24 4.24 0 0 1 0 6 4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 1 5.15 13c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 0-6c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 0 13 5.15c.28.28.56.56.85.85a4.24 4.24 0 0 1 6 0Z"/></svg>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Create your free account</h2>
+                <p class="text-gray-600 mb-6">Join crest.pet and unlock modern pet care.</p>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="text-sm font-medium text-gray-700" for="email">Email</label>
+                    <input type="email" id="email" class="mt-1 w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="you@example.com" />
+                </div>
+                <div>
+                    <label class="text-sm font-medium text-gray-700" for="password">Password</label>
+                    <input type="password" id="password" class="mt-1 w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500" placeholder="••••••••" />
+                </div>
+                <div class="flex items-center">
+                    <input id="terms" type="checkbox" class="h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500" />
+                    <label for="terms" class="ml-2 block text-sm text-gray-700">I agree to the <a href="#" class="font-medium text-purple-600 hover:underline">Terms of Service</a></label>
+                </div>
+                <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition-all shadow-md">
+                    Start Free Trial
+                </button>
+            </form>
+            <p class="text-center text-sm text-gray-500 mt-6">
+                Already have an account? <a href="#" class="font-medium text-purple-600 hover:underline">Log in</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl relative">
+            <button id="closeBookingModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            
+            <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Book an Appointment</h2>
+            <p class="text-gray-600 mb-6 text-center">It's quick, easy, and stress-free.</p>
+
+            <!-- Progress Bar -->
+            <div class="w-full mb-8">
+                <div class="relative">
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 transform -translate-y-1/2"></div>
+                    <div id="progressBar" class="absolute top-1/2 left-0 h-1 bg-purple-600 transform -translate-y-1/2 transition-all duration-300" style="width: 0%;"></div>
+                    <div class="flex justify-between items-center relative">
+                        <div class="progress-step h-3 w-3 rounded-full transition-all duration-300 bg-purple-600"></div>
+                        <div class="progress-step h-3 w-3 rounded-full transition-all duration-300 bg-gray-200"></div>
+                        <div class="progress-step h-3 w-3 rounded-full transition-all duration-300 bg-gray-200"></div>
+                        <div class="progress-step h-3 w-3 rounded-full transition-all duration-300 bg-gray-200"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Steps -->
+            <div id="bookingStep1" class="">
+                <h3 class="font-semibold text-lg text-gray-800 mb-4">Which pet is this for?</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="p-4 border-2 border-gray-200 rounded-lg text-center cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all focus:border-purple-500 focus:bg-purple-50 focus:ring-2 focus:ring-purple-300" tabindex="0">
+                        <div class="text-purple-600 mx-auto w-12 h-12 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dog"><path d="M10 5.2C10 3.4 8.2 2 6 2s-4 1.4-4 3.2c0 1.7 1.3 3 3 3.2V15c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-3c0-1.1.9-2 2-2h2c1.1 0 2-.9 2-2s-.9-2-2-2h-2c-1.2 0-2.2.9-2.4 2.1L8.5 10c-.2-.1-.5-.1-.7-.2C7 9.5 6.5 8.7 6.5 8c0-.4.2-.8.4-1.1L8 5.4C8.4 5.2 9 4.7 9 4c0-.4-.2-.8-.4-1.1L7.1 2.4C6.8 2.2 6.4 2 6 2s-.8.2-1.1.4L3.4 3.9C3.2 4.2 3 4.6 3 5c0 .7.5 1.5 1.3 1.8c.2.1.5.1.7.2l1.5 1.5C6.8 8.8 7 9.2 7 9.6c0 .4-.2.8-.4 1.1l-1.5 1.5C4.9 12.4 4 13.2 4 14.2V15c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4v-3c0-2.2 1.8-4 4-4h2c2.2 0 4-1.8 4-4s-1.8-4-4-4h-2c-2.2 0-4 1.8-4 4v.8c0 .3.1.5.3.7l1.4 1.4c.2.2.5.3.7.3h2.2c.6 0 1 .4 1 1s-.4 1-1 1h-2.2c-.3 0-.5.1-.7.3l-1.4 1.4C13.1 11.5 13 11.7 13 12v3c0 .6-.4 1-1 1s-1-.4-1-1v-3c0-.3-.1-.5-.3-.7l-1.4-1.4C9.1 9.7 8.9 9.5 8.9 9.2V8.4c0-1.5-1.2-2.8-2.7-2.9C4.8 5.4 4 4.4 4 3.2A2.8 2.8 0 0 1 6 1a2.8 2.8 0 0 1 2 2.2c.1.5-.3 1-.8 1-.6 0-1.1-.4-1.2-.9C5.9 3 5.7 2.8 5.5 2.7c-.2-.1-.5-.1-.7 0C4.5 2.8 4.3 3 4.2 3.2c-.1.5.3 1 .8 1 .6 0 1.1.4 1.2.9.1.5-.3 1-.8 1s-1.1-.4-1.2-.9c-.1-.2-.3-.4-.5-.5s-.5-.1-.7 0c-.3.1-.5.3-.6.5C2.1 5.4 3 6.6 4.2 7.1c.5.2 1.1.2 1.6 0C6.4 6.8 7 6 7 5.2c0-1.1.9-2 2-2s2 .9 2 2z"/></svg></div>
+                        <p class="mt-2 font-semibold text-gray-800">Luna</p>
+                    </div>
+                     <div class="p-4 border-2 border-gray-200 rounded-lg text-center cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all focus:border-purple-500 focus:bg-purple-50 focus:ring-2 focus:ring-purple-300" tabindex="0">
+                        <div class="text-purple-600 mx-auto w-12 h-12 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cat"><path d="M12 5c.67 0 1.35.09 2 .26 1.78.46 2.9 2.12 2.95 3.95.05 1.83-.9 3.45-2.45 4.34A5.07 5.07 0 0 1 12 14.9c-1.82 0-3.43-.99-4.5-2.45-1.55-.89-2.5-2.51-2.45-4.34C5.1 7.37 6.22 5.72 8 5.26c.65-.17 1.33-.26 2-.26h2m0-2H12C6.48 3 2 7.48 2 13c0 4.42 2.87 8.17 6.84 9.49.6.25 1.16.25 1.76 0C14.6 21.17 22 17.42 22 13c0-5.52-4.48-10-10-10z"/></svg></div>
+                        <p class="mt-2 font-semibold text-gray-800">Milo</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:bg-gray-50 hover:border-purple-400 cursor-pointer transition-colors">
+                        <span class="text-3xl">+</span>
+                        <span class="text-sm font-semibold">Add New Pet</span>
+                    </div>
+                </div>
+            </div>
+            <div id="bookingStep2" class="hidden">
+                 <h3 class="font-semibold text-lg text-gray-800 mb-4">What's the reason for your visit?</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all">
+                        <div class="flex items-center space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                            <span class="font-semibold text-gray-800">Wellness Exam</span>
+                        </div>
+                        <span class="font-bold text-gray-900">$45</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all">
+                        <div class="flex items-center space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><path d="m9 12 2 2 4-4"></path><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.8.9 6.7 2.4"></path></svg>
+                            <span class="font-semibold text-gray-800">Vaccinations</span>
+                        </div>
+                        <span class="font-bold text-gray-900">$80</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all">
+                        <div class="flex items-center space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><path d="M17 12c.28-.28.56-.56.85-.85a4.24 4.24 0 0 0 0-6 4.24 4.24 0 0 0-6 0c-.28.28-.56.56-.85.85A4.24 4.24 0 0 0 5.15 11c.28-.28.56-.56.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c.28-.28.56-.56.85-.85A4.24 4.24 0 0 0 17 6.15c-.28.28-.56.56-.85.85a4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 0-6 0 4.24 4.24 0 0 0 0 6c.28.28.56.56.85.85A4.24 4.24 0 0 0 11 18.85c.28.28.56.56.85.85a4.24 4.24 0 0 1 0 6 4.24 4.24 0 0 1-6 0c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 1 5.15 13c.28.28.56.56.85.85a4.24 4.24 0 0 0 6 0c-.28-.28-.56-.56-.85-.85a4.24 4.24 0 0 1 6 0c.28.28.56.56.85.85a4.24 4.24 0 0 0 0-6c-.28-.28-.56-.56-.85-.85A4.24 4.24 0 0 0 13 5.15c.28.28.56.56.85.85a4.24 4.24 0 0 1 6 0Z"/></svg>
+                            <span class="font-semibold text-gray-800">Dental Cleaning</span>
+                        </div>
+                        <span class="font-bold text-gray-900">$250</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all">
+                        <div class="flex items-center space-x-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span class="font-semibold text-gray-800">Something Else</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="bookingStep3" class="hidden">
+                 <h3 class="font-semibold text-lg text-gray-800 mb-4">Choose a date and time</h3>
+                <div class="p-4 border rounded-lg">
+                    <p class="text-center font-semibold">Calendar Placeholder</p>
+                    <div class="grid grid-cols-3 gap-2 mt-4">
+                        <button class="p-2 bg-purple-100 text-purple-700 font-semibold rounded-lg">9:00 AM</button>
+                        <button class="p-2 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-purple-100">10:00 AM</button>
+                        <button class="p-2 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-purple-100">11:00 AM</button>
+                        <button class="p-2 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-purple-100">2:00 PM</button>
+                        <button class="p-2 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-purple-100">3:00 PM</button>
+                    </div>
+                </div>
+            </div>
+            <div id="bookingStep4" class="hidden">
+                <div class="text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mx-auto mb-4"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <h3 class="font-bold text-2xl text-gray-900">Appointment Confirmed!</h3>
+                    <p class="text-gray-600 mt-2 mb-6">
+                        Your wellness exam for Luna is booked for <br />
+                        <span class="font-semibold text-gray-800">Tuesday, August 19th at 9:00 AM</span> with Dr. Emily Carter.
+                    </p>
+                    <button id="bookingDoneBtn" class="bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors shadow-sm">
+                        Done
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-between items-center">
+                <button id="bookingBackBtn" class="text-gray-600 font-semibold px-6 py-2.5 rounded-lg hover:bg-gray-100 transition-colors hidden">Back</button>
+                <div class="flex-grow"></div>
+                <button id="bookingNextBtn" class="bg-purple-600 text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-purple-700 transition-colors shadow-sm">Next</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Chat Assistant -->
+    <div id="chatAssistant" class="fixed bottom-8 right-8 z-50 transition-all duration-300 w-16 h-16">
+        <!-- Chat bubble -->
+        <div id="chatBubble" class="">
+            <button id="openChatBtn" class="bg-purple-600 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl hover:bg-purple-700 transform hover:scale-110 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </button>
+        </div>
+
+        <!-- Chat window -->
+        <div id="chatWindow" class="bg-white w-96 h-[32rem] rounded-2xl shadow-2xl flex flex-col overflow-hidden border hidden">
+            <div class="bg-purple-600 text-white p-4 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="12" width="8" height="8" rx="2"/><path d="M20 12v4h-4"/><path d="m14 14-2-2-2 2"/><path d="M14 18v-4h4"/></svg>
+                    <h3 class="font-bold text-lg">AI Vet Assistant</h3>
+                </div>
+                <button id="closeChatBtn" class="text-purple-200 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div id="chatMessages" class="flex-grow p-4 overflow-y-auto bg-gray-50">
+                <div class="space-y-4">
+                    <!-- AI Message -->
+                    <div class="flex items-end gap-2 justify-start">
+                        <div class="bg-purple-100 text-purple-600 rounded-full h-8 w-8 flex-shrink-0 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="12" width="8" height="8" rx="2"/><path d="M20 12v4h-4"/><path d="m14 14-2-2-2 2"/><path d="M14 18v-4h4"/></svg>
+                        </div>
+                        <div class="max-w-xs md:max-w-sm px-4 py-2.5 rounded-2xl bg-white text-gray-800 rounded-bl-none border">
+                            <p class="text-sm">Hi there! I'm your AI Vet Assistant. How can I help you and your furry friend today?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t bg-white">
+                <div class="flex items-center space-x-2">
+                    <input id="chatInput" type="text" placeholder="What's up with your pet?" class="w-full px-4 py-2.5 border border-gray-300 rounded-full focus:ring-purple-500 focus:border-purple-500" />
+                    <button id="sendChatBtn" class="bg-purple-600 text-white rounded-full p-3 hover:bg-purple-700 transition-colors flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- MODAL HANDLING ---
+            const signUpModal = document.getElementById('signUpModal');
+            const bookingModal = document.getElementById('bookingModal');
+            
+            const openSignUpButtons = [document.getElementById('loginBtnHeader'), document.getElementById('signUpBtnHeader'), document.getElementById('startSavingBtn')];
+            const openBookingButtons = [document.getElementById('bookAppointmentBtnHero')];
+
+            const closeSignUpModalBtn = document.getElementById('closeSignUpModal');
+            const closeBookingModalBtn = document.getElementById('closeBookingModal');
+            const bookingDoneBtn = document.getElementById('bookingDoneBtn');
+
+            const toggleModal = (modal, force) => {
+                modal.classList.toggle('hidden', force);
+            };
+
+            openSignUpButtons.forEach(btn => btn.addEventListener('click', () => toggleModal(signUpModal, false)));
+            openBookingButtons.forEach(btn => btn.addEventListener('click', () => toggleModal(bookingModal, false)));
+
+            closeSignUpModalBtn.addEventListener('click', () => toggleModal(signUpModal, true));
+            closeBookingModalBtn.addEventListener('click', () => toggleModal(bookingModal, true));
+            bookingDoneBtn.addEventListener('click', () => toggleModal(bookingModal, true));
+
+            // --- BOOKING MODAL LOGIC ---
+            const bookingSteps = [
+                document.getElementById('bookingStep1'),
+                document.getElementById('bookingStep2'),
+                document.getElementById('bookingStep3'),
+                document.getElementById('bookingStep4')
+            ];
+            const bookingNextBtn = document.getElementById('bookingNextBtn');
+            const bookingBackBtn = document.getElementById('bookingBackBtn');
+            const progressBar = document.getElementById('progressBar');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            let currentStep = 0;
+            const totalSteps = bookingSteps.length;
+
+            const updateBookingView = () => {
+                bookingSteps.forEach((step, index) => {
+                    step.classList.toggle('hidden', index !== currentStep);
+                });
+                
+                bookingBackBtn.classList.toggle('hidden', currentStep === 0);
+                bookingNextBtn.classList.toggle('hidden', currentStep === totalSteps - 1);
+                
+                // Update progress bar
+                const progressPercentage = (currentStep / (totalSteps - 1)) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+                progressSteps.forEach((step, index) => {
+                    step.classList.toggle('bg-purple-600', index <= currentStep);
+                    step.classList.toggle('bg-gray-200', index > currentStep);
+                });
+            };
+
+            bookingNextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    updateBookingView();
+                }
+            });
+
+            bookingBackBtn.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateBookingView();
+                }
+            });
+            
+            // Reset modal on close
+            closeBookingModalBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    currentStep = 0;
+                    updateBookingView();
+                }, 300); // delay to allow closing animation
+            });
+
+
+            // --- CHAT ASSISTANT LOGIC ---
+            const chatAssistant = document.getElementById('chatAssistant');
+            const chatBubble = document.getElementById('chatBubble');
+            const chatWindow = document.getElementById('chatWindow');
+            const openChatBtn = document.getElementById('openChatBtn');
+            const closeChatBtn = document.getElementById('closeChatBtn');
+            const chatBtnHero = document.getElementById('chatBtnHero');
+            const chatMessages = document.getElementById('chatMessages').querySelector('.space-y-4');
+            const chatInput = document.getElementById('chatInput');
+            const sendChatBtn = document.getElementById('sendChatBtn');
+
+            const toggleChat = (isOpen) => {
+                chatBubble.classList.toggle('hidden', isOpen);
+                chatWindow.classList.toggle('hidden', !isOpen);
+                chatAssistant.classList.toggle('w-96', isOpen);
+                chatAssistant.classList.toggle('h-[32rem]', isOpen);
+                chatAssistant.classList.toggle('w-16', !isOpen);
+                chatAssistant.classList.toggle('h-16', !isOpen);
+            };
+
+            openChatBtn.addEventListener('click', () => toggleChat(true));
+            chatBtnHero.addEventListener('click', () => toggleChat(true));
+            closeChatBtn.addEventListener('click', () => toggleChat(false));
+
+            const addMessage = (text, from) => {
+                const messageContainer = document.createElement('div');
+                let messageHTML = '';
+
+                if (from === 'ai') {
+                    messageHTML = `
+                        <div class="flex items-end gap-2 justify-start">
+                            <div class="bg-purple-100 text-purple-600 rounded-full h-8 w-8 flex-shrink-0 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="12" width="8" height="8" rx="2"/><path d="M20 12v4h-4"/><path d="m14 14-2-2-2 2"/><path d="M14 18v-4h4"/></svg>
+                            </div>
+                            <div class="max-w-xs md:max-w-sm px-4 py-2.5 rounded-2xl bg-white text-gray-800 rounded-bl-none border">
+                                <p class="text-sm">${text}</p>
+                            </div>
+                        </div>
+                    `;
+                } else { // user
+                    messageHTML = `
+                        <div class="flex items-end gap-2 justify-end">
+                            <div class="max-w-xs md:max-w-sm px-4 py-2.5 rounded-2xl bg-purple-600 text-white rounded-br-none">
+                                <p class="text-sm">${text}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+                messageContainer.innerHTML = messageHTML;
+                chatMessages.appendChild(messageContainer);
+                chatMessages.parentElement.scrollTop = chatMessages.parentElement.scrollHeight;
+            };
+            
+            const getAIResponse = (userInput) => {
+                const lowerInput = userInput.toLowerCase();
+                if (lowerInput.includes('vomit')) {
+                    return "I'm sorry to hear your pet is vomiting. Can you tell me if they have any other symptoms, like lethargy or diarrhea? For immediate concerns, it's always best to contact a vet directly. Would you like me to help you book an appointment?";
+                } else if (lowerInput.includes('flea')) {
+                    return "Flea prevention is very important. There are many great options, from topical treatments to oral medications. The best choice can depend on your pet's species, age, and lifestyle. I can provide some general information, or help you book a consultation with a vet to discuss a specific plan.";
+                } else if (lowerInput.includes('hello') || lowerInput.includes('hi')) {
+                    return "Hello! What can I help you with today?";
+                }
+                return "That's a great question. While I can provide general guidance, a licensed veterinarian would be the best person to give you specific advice. Would you like to book a virtual or in-person appointment?";
+            };
+
+            const handleSend = () => {
+                const text = chatInput.value.trim();
+                if (!text) return;
+
+                addMessage(text, 'user');
+                chatInput.value = '';
+
+                setTimeout(() => {
+                    const aiResponse = getAIResponse(text);
+                    addMessage(aiResponse, 'ai');
+                }, 1000);
+            };
+
+            sendChatBtn.addEventListener('click', handleSend);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleSend();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
